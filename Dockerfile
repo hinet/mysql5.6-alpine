@@ -7,6 +7,14 @@ RUN adduser mysql -G mysql -s /sbin/nologin -D
 RUN mkdir -p /usr/local/mysql
 RUN chown -R mysql:mysql /usr/local/mysql
 
+# 编译mysql依赖此包
+RUN wget http://invisible-island.net/datafiles/current/ncurses.tar.gz
+RUN tar zxf ncurses.tar.gz
+RUN cd ncurses
+RUN ./configure \
+    && make && make install
+RUN rm -rf ncurses*
+
 RUN wget https://cdn.mysql.com//Downloads/MySQL-5.6/mysql-5.6.40.tar.gz
 RUN tar zxf mysql-5.6.40.tar.gz -C /usr/local/mysql
 RUN rm -rf mysql-5.6.40.tar.gz
