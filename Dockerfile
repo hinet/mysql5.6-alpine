@@ -1,7 +1,7 @@
 FROM alpine:3.8
 LABEL maintainer="hinet <63603636@qq.com>"
 # 安装开发工具包alpine-sdk
-RUN apk add cmake alpine-sdk
+RUN apk add cmake alpine-sdk ncurses
 RUN addgroup mysql
 RUN adduser mysql -G mysql -s /sbin/nologin -D 
 RUN mkdir -p /usr/local/mysql
