@@ -31,6 +31,7 @@ RUN cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql \
   -DMYSQL_DATADIR=/usr/local/mysql/data \
   -DMYSQL_TCP_PORT=3306 \
   -DENABLE_DOWNLOADS=1
+RUN make && make install
 
 RUN echo -e "[client]\ndefault-character-set=utf8\n" \
 "socket=/usr/local/mysql/tmp/mysql.sock\n\n" \
